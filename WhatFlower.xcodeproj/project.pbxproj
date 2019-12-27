@@ -13,6 +13,7 @@
 		1299921523B5D3CA00BE6CAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1299921323B5D3CA00BE6CAA /* Main.storyboard */; };
 		1299921723B5D3CC00BE6CAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1299921623B5D3CC00BE6CAA /* Assets.xcassets */; };
 		1299921A23B5D3CC00BE6CAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1299921823B5D3CC00BE6CAA /* LaunchScreen.storyboard */; };
+		1299922223B5D4EF00BE6CAA /* FlowerClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1299922123B5D4EF00BE6CAA /* FlowerClassifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1299921623B5D3CC00BE6CAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1299921923B5D3CC00BE6CAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1299921B23B5D3CC00BE6CAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1299922123B5D4EF00BE6CAA /* FlowerClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				1299921623B5D3CC00BE6CAA /* Assets.xcassets */,
 				1299921823B5D3CC00BE6CAA /* LaunchScreen.storyboard */,
 				1299921B23B5D3CC00BE6CAA /* Info.plist */,
+				1299922123B5D4EF00BE6CAA /* FlowerClassifier.mlmodel */,
 			);
 			path = WhatFlower;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1299922223B5D4EF00BE6CAA /* FlowerClassifier.mlmodel in Sources */,
 				1299921223B5D3CA00BE6CAA /* ViewController.swift in Sources */,
 				1299920E23B5D3CA00BE6CAA /* AppDelegate.swift in Sources */,
 				1299921023B5D3CA00BE6CAA /* SceneDelegate.swift in Sources */,
