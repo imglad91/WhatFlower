@@ -9,12 +9,16 @@
 import UIKit
 import Vision
 import CoreML
-
+import Alamofire
+import SwiftyJSON
+import SDWebImage
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     var imagePicker = UIImagePickerController()
+    let flowerURL = "https://en.wikipedia.org/w/api.php"
     
     override func viewDidLoad() {
         
@@ -23,6 +27,45 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.allowsEditing = true
         
     }
+   
+    
+    //MARK: - Networking
+    func getFlowerData(flowerName : String) {
+        
+        let parameters : [String:String] = [
+        "format" : "json",
+        "action" : "query",
+        "prop" : "extracts|pageimages",
+        "exintro" : "",
+        "explaintext" : "",
+        "titles" : flowerName,
+        "indexpageids" : "",
+        "redirects" : "1",
+        "pithumbsize" : "500"
+        ]
+
+        Alamofire.request(flowerURL, method: .get, parameters: parameters).responseJSON { (response) in
+            if response.result.isSuccess {
+            print("Succes we got the flower data")
+            let flowerJSON : JSON = JSON(response.result.value!)
+            print(flowerJSON)
+            
+                let pageid = flowerJSON["query"]["pageids"][0].stringValue
+                let flowerDescription = flowerJSON["query"]["pages"][pageid]["extract"].stringValue
+                let flowerURL = flowerJSON["query"]["pages"][pageid]["thumbnail"]["source"].stringValue
+                self.imageView.sd_setImage(with: URL(string: flowerURL))
+                self.label.text = flowerDescription
+                
+                
+                
+                
+        }
+            else { print("Error \(String(describing: response.result.error))")}
+    }
+    }
+    
+    
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let userPickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
@@ -31,6 +74,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         detectFlower(flowerImage: ciflowerImage)
         }
         imagePicker.dismiss(animated: true, completion: nil)
+        
+        
     }
     
     func detectFlower(flowerImage: CIImage) {
@@ -38,12 +83,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let request = VNCoreMLRequest(model: model) { (request, error) in
             guard let results = request.results as? [VNClassificationObservation] else {fatalError("Model failed to process results")}
             print(results)
-            if let firstResult = results.first {
-                self.navigationItem.title = firstResult.identifier
-            } else { self.navigationItem.title = "I dont know what flower it is"}
             
-       
+            if let firstResult = results.first {
+                self.getFlowerData(flowerName: firstResult.identifier)
+                self.navigationItem.title = firstResult.identifier.capitalized
+            } else { self.navigationItem.title = "I dont know what flower it is"}
+                   
         }
+        
+        
+        
         let handler = VNImageRequestHandler(ciImage: flowerImage)
         do {
             try handler.perform([request])

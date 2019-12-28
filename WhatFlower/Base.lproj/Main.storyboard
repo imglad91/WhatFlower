@@ -15,21 +15,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mb7-Yu-yl8">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="C8d-jk-uhx">
+                                <rect key="frame" x="16" y="441" width="343" height="206"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mb7-Yu-yl8">
+                                <rect key="frame" x="0.0" y="44" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mb7-Yu-yl8" secondAttribute="height" multiplier="1:1" id="3Y6-Vb-R57"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="mb7-Yu-yl8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CQE-sX-b2v"/>
-                            <constraint firstItem="mb7-Yu-yl8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T97-yw-4za"/>
-                            <constraint firstItem="mb7-Yu-yl8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dfR-3m-1cR"/>
-                            <constraint firstItem="mb7-Yu-yl8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="egv-s5-shb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C8d-jk-uhx" secondAttribute="trailing" constant="16" id="HA0-iR-OuQ"/>
+                            <constraint firstItem="C8d-jk-uhx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="JFr-vz-110"/>
+                            <constraint firstItem="mb7-Yu-yl8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Kr3-ae-hgy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="C8d-jk-uhx" secondAttribute="bottom" constant="20" id="ZFn-lB-Q6C"/>
+                            <constraint firstItem="mb7-Yu-yl8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bVs-vK-MOk"/>
+                            <constraint firstItem="mb7-Yu-yl8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="k8j-zL-UKE"/>
+                            <constraint firstItem="C8d-jk-uhx" firstAttribute="top" secondItem="mb7-Yu-yl8" secondAttribute="bottom" constant="22" id="ol5-kj-rEW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="7vt-kq-ALu">
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="XgX-JC-gLa">
+                            <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <connections>
                                 <action selector="cameraTapped:" destination="BYZ-38-t0r" id="OoA-SZ-9JG"/>
                             </connections>
@@ -37,6 +50,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="mb7-Yu-yl8" id="Smz-Bz-OZy"/>
+                        <outlet property="label" destination="C8d-jk-uhx" id="JJD-sk-Ok4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -51,6 +65,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mra-Sa-ZHZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
